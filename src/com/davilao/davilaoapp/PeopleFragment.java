@@ -21,7 +21,7 @@ public class PersonFragment extends ListFragment
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		setListAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.view_one, Person.List));
+		setListAdapter(new ArrayAdapter<Person>(getActivity(), android.R.layout.view_one, Person.List));
 
 	}
 
