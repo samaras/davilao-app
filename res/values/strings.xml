@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">MainActivity</string>
+    <string name="list">List</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="button_add">Add</string>
+    <string-array name="exampllist">
+        <item>Comet</item>
+        <item>Asteroid</item>
+        <item>Planet</item>
+    </string-array>
+    <color name="red">#ffff0000</color>
+    <dimen name="mymargin">10dp</dimen>
 </resources>
