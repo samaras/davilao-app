@@ -53,6 +53,48 @@ public class PersonFragment extends Fragment
 		currPosition = position;
 	}
 
+	public void callNumber(String phoneNumber)
+	{
+		Intent callIntent = new Intent(Intent.ACTION_CALL);
+		callIntent.setData(Uri.parse("tel:" + phoneNumber));
+		startActivity(callIntent);
+	}
+
+	public void serialPerson(ArrayList<Person> personList) 
+	{
+		ObjectOutputStream objOutStream = null;
+		FileOutputStream fOutStream = null;
+		try{
+        	FileOutputStream fOutStream = new FileOutputStream("people.ser", true);
+        	ObjectOutputStream objOutStream = new ObjectOutputStream(fOutStream);
+        	objOutStream.writeObject(personList);
+		} catch (Exception ex) {
+        	e.printStackTrace();
+		}finally {
+        	if(objOutStream  != null){
+            	objOutStream.close();
+         	} 
+		}
+	}
+
+	public ArrayList<Person> deserialPerson(int i)
+	{
+		ObjectInputStream objInStream = null;
+ 		try {
+	        streamIn = new FileInputStream("people.ser");
+	        ObjectInputStream objInStream = new ObjectInputStream(streamIn);
+	        List<Personn> readCase = (List<Person>) objInStream.readObject();
+	        recordList.add(readCase);
+	        return recordList.get(i);
+    	} catch (Exception e) {
+        	e.printStackTrace();
+ 		}finally {
+        	if(objInStream != null){
+            	objInStream .close();
+         	} 
+ 		}
+	}
+
 	@Override 
 	public void onSavedInstanceState(Bundle state)
 	{
@@ -62,7 +104,3 @@ public class PersonFragment extends Fragment
 		state.putInt(POSITION, currPosition);
 	}
 }
-
-Intent callIntent = new Intent(Intent.ACTION_CALL);
-callIntent.setData(Uri.parse("tel:" + phoneNumber));
-startActivity(callIntent);
