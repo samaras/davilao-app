@@ -12,7 +12,7 @@ public class MainActivity extends FragmentActivity implements PersonFragment.OnP
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.people);
+        setContentView(R.layout.main);
 
         /* 
         	Get the FrameLayout view in main.xml file
@@ -31,7 +31,7 @@ public class MainActivity extends FragmentActivity implements PersonFragment.OnP
     	listFragement.setArguments(getIntent().getExtras());
 
     	// Begin the fragment initialization here
-    	getSupportFragmentManager().beginTransaction().add(R.id.main, listFragement).commit()
+    	getSupportFragmentManager().beginTransaction().add(R.id.listFragement, listFragement).commit()
     }
 
     /**

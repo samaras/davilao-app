@@ -1,6 +1,6 @@
 package com.davilao.davilaoapp;
 
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
 import android.os.Bundle;
 import android.view.View;
 import android.view.LayoutInflater;
@@ -13,7 +13,7 @@ public class PersonFragment extends Fragment
 	int currPosition = -1;
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup vg, Bundle state)
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle state)
 	{
 		if(state != null) 
 		{
@@ -21,7 +21,7 @@ public class PersonFragment extends Fragment
 		}
 
 		// Inflate layout for this fragment
-		return inflater.inflate(R.layout.view_one, vg, flase);
+		return inflater.inflate(R.layout.view_one, container, false);
 	}
 
 	@Override
@@ -46,10 +46,10 @@ public class PersonFragment extends Fragment
 		TextView lastName = (TextView) getActivity().findViewById(R.id.last_name);
 		TextView phoneNumber = (TextView) getActivity().findViewById(R.id.phone_number);
 
-		Person p = Person.getPerson(position);
-		firstName.setText = p.name;
-		lastName.setText = p.surname;
-		phoneNumber.setText = p.phoneNumber;
+		Person p = deserialPerson(position);
+		firstName.setText = p.getName();
+		lastName.setText = p.getSurname();
+		phoneNumber.setText = p.getPhoneNumber();
 		currPosition = position;
 	}
 
@@ -62,10 +62,11 @@ public class PersonFragment extends Fragment
 
 	public void serialPerson(ArrayList<Person> personList) 
 	{
+		List<Person> p = new ArrayList<Person>();
 		ObjectOutputStream objOutStream = null;
 		FileOutputStream fOutStream = null;
 		try{
-        	FileOutputStream fOutStream = new FileOutputStream("people.ser", true);
+        	FileOutputStream fOutStream = new FileOutputStream("people.dat", true);
         	ObjectOutputStream objOutStream = new ObjectOutputStream(fOutStream);
         	objOutStream.writeObject(personList);
 		} catch (Exception ex) {
@@ -81,7 +82,7 @@ public class PersonFragment extends Fragment
 	{
 		ObjectInputStream objInStream = null;
  		try {
-	        streamIn = new FileInputStream("people.ser");
+	        streamIn = new FileInputStream("people.dat");
 	        ObjectInputStream objInStream = new ObjectInputStream(streamIn);
 	        List<Personn> readCase = (List<Person>) objInStream.readObject();
 	        recordList.add(readCase);

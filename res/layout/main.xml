@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/fragment_container"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    />
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <fragment 
+    	android:id="@+id/listFragment"
+    	android:layout_height="match_parent"
+    	android:layout_width="0dp"
+    	android:layout_weight="1"
+    	android:layout_marginTop="?android:attr/actionBarSize"
+    	class="com.davilao.davilaoapp.PeopleFragment">
+	</fragment>
+	<fragment 
+    	android:id="@+id/detailFragment"
+    	android:layout_height="match_parent"
+    	android:layout_width="0dp"
+    	android:layout_weight="2"
+    	class="com.davilao.davilaoapp.PersonFragment">
+	</fragment>
+</LinearLayout>

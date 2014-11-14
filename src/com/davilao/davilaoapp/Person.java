@@ -13,48 +13,33 @@ public class Person
 		this.phoneNumber = phoneNumber;
 	}
 
-	public ArrayList<Person> getPerson(int position)
+	public setName(String name) 
 	{
-
+		this.name = name;
 	}
 
-	public setPerson(ArrayList<String> person)
+	public setSurname(String surname) 
 	{
-
+		this.surname = surname;
 	}
 
-	public void serialPerson(ArrayList<Person> personList) 
+	public setPhoneNumber(String phoneNumber) 
 	{
-		ObjectOutputStream objOutStream = null;
-		FileOutputStream fOutStream = null;
-		try{
-        	FileOutputStream fOutStream = new FileOutputStream("people.ser", true);
-        	ObjectOutputStream objOutStream = new ObjectOutputStream(fOutStream);
-        	objOutStream.writeObject(personList);
-		} catch (Exception ex) {
-        	e.printStackTrace();
-		}finally {
-        	if(objOutStream  != null){
-            	objOutStream.close();
-         	} 
-		}
+		this.phoneNumber = phoneNumber;
 	}
 
-	public ArrayList<Person> deserialPerson(int i)
+	public String getName()
 	{
-		ObjectInputStream objInStream = null;
- 		try {
-	        streamIn = new FileInputStream("people.ser");
-	        ObjectInputStream objInStream = new ObjectInputStream(streamIn);
-	        List<Personn> readCase = (List<Person>) objInStream.readObject();
-	        recordList.add(readCase);
-	        return recordList.get(i);
-    	} catch (Exception e) {
-        	e.printStackTrace();
- 		}finally {
-        	if(objInStream != null){
-            	objInStream .close();
-         	} 
- 		}
+		return this.name;
+	}
+
+	public String getSurname()
+	{
+		return this.surname;
+	}
+
+	public String getPhoneNumber()
+	{
+		return this.phoneNumber;
 	}
 }
